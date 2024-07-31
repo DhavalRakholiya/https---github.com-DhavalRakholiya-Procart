@@ -1,0 +1,57 @@
+<div class="container">
+    <div class="row align-items-center min-vh-100">
+      <div class="col-sm-1"></div>
+      <div class="col-sm-10">
+        <h2>Add Product</h2>
+        <br>
+        <form [formGroup]="productAddForm" (ngSubmit)="AddProduct()">
+            <div class="form-group">
+                <label for="product">Product Name <span class="text-danger" *ngIf="productAddForm.controls['product'].errors?.['required']">*</span></label>
+                <input type="text" class="form-control" placeholder="Product Name" formControlName="product">
+                <div *ngIf="productAddForm.controls['product'].invalid && (productAddForm.controls['product'].dirty || productAddForm.controls['product'].touched)">
+                    <span class="text-danger" *ngIf="productAddForm.controls['product'].errors?.['required']">Product Name is required</span>
+                </div>
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="category">Product Category <span class="text-danger" *ngIf="productAddForm.controls['category'].errors?.['required']">*</span></label>
+                <input type="text" class="form-control" placeholder="Product Category" formControlName="category">
+                <div *ngIf="productAddForm.controls['category'].invalid && (productAddForm.controls['category'].dirty || productAddForm.controls['category'].touched)">
+                    <span class="text-danger" *ngIf="productAddForm.controls['category'].errors?.['required']">Product Category is required</span>
+                </div>
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="description">Product Description <span class="text-danger" *ngIf="productAddForm.controls['description'].errors?.['required']">*</span></label>
+                <textarea class="form-control" rows="3" placeholder="Product Description" formControlName="description"></textarea>
+                <div *ngIf="productAddForm.controls['description'].invalid && (productAddForm.controls['description'].dirty || productAddForm.controls['description'].touched)">
+                    <span class="text-danger" *ngIf="productAddForm.controls['description'].errors?.['required']">Product Description is required</span>
+                </div>
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="price">Price <span class="text-danger" *ngIf="productAddForm.controls['price'].errors?.['required']">*</span></label>
+                <input type="text" class="form-control" placeholder="Product Price" formControlName="price">
+                <div *ngIf="productAddForm.controls['price'].invalid && (productAddForm.controls['price'].dirty || productAddForm.controls['price'].touched)">
+                    <span class="text-danger" *ngIf="productAddForm.controls['price'].errors?.['required']">Price is required</span>
+                    <span class="text-danger" *ngIf="productAddForm.controls['price'].errors?.['pattern']">Price must only contains numeric value</span>
+                    <span class="text-danger" *ngIf="productAddForm.controls['price'].errors?.['maxlength']">Price value can only contain upto 7 characters</span>
+                </div>
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="quantity">Quantity <span class="text-danger" *ngIf="productAddForm.controls['quantity'].errors?.['required']">*</span></label>
+                <input type="text" class="form-control" placeholder="Product Quantity" formControlName="quantity">
+                <div *ngIf="productAddForm.controls['quantity'].invalid && (productAddForm.controls['quantity'].dirty || productAddForm.controls['quantity'].touched)">
+                    <span class="text-danger" *ngIf="productAddForm.controls['quantity'].errors?.['required']">Quantity is required</span>
+                    <span class="text-danger" *ngIf="productAddForm.controls['quantity'].errors?.['pattern']">Quantity must only contains numeric value</span>
+                    <span class="text-danger" *ngIf="productAddForm.controls['quantity'].errors?.['maxlength']">Quantity value can only contain upto 4 characters</span>
+                </div>
+            </div>
+            <br>
+            <button class="btn btn-primary" [disabled]="productAddForm.invalid">Add Product</button>
+        </form>
+      </div>
+      <div class="col-sm-1"></div>
+    </div>
+</div>
